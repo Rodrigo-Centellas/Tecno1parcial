@@ -67,8 +67,8 @@ public class CommandInterpreter {
                 return handleUsuario(command, params);
             case "vehiculo":
                 return handleVehiculo(command, params);
-            case "rol":
-                return handleRol(command, params);
+//            case "rol":
+//                return handleRol(command, params);
             case "pagos":
                 return handlePagos(command, params);
             case "notificacion":
@@ -135,16 +135,16 @@ public class CommandInterpreter {
         }
     }
 
-    private static String handleRol(String command, String params) {
-        switch (command) {
-            case "save": return HandleRol.save(params);
-            case "update": return HandleRol.update(params);
-            case "delete": return HandleRol.delete(params);
-            case "findAll": return HandleRol.findAll();
-            case "findOne": return HandleRol.findOne(params);
-            default: return "Comando no válido para rol";
-        }
-    }
+//    private static String handleRol(String command, String params) {
+//        switch (command) {
+//            case "save": return HandleRol.save(params);
+//            case "update": return HandleRol.update(params);
+//            case "delete": return HandleRol.delete(params);
+//            case "findAll": return HandleRol.findAll();
+//            case "findOne": return HandleRol.findOne(params);
+//            default: return "Comando no válido para rol";
+//        }
+//    }
 
     private static String handlePagos(String command, String params) {
         switch (command) {
