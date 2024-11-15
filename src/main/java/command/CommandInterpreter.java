@@ -228,6 +228,9 @@ public class CommandInterpreter {
                 + " - delete (id)\n"
                 + "\n"
                 + "CU: reportes\n"
-                + " - generate (tipoReporte, parametros)\n";
+                + " - generate  (contratos_activos)\n"
+                + " - generate (pagos_recientes)\n\n"
+                + " - generate (vehículos_mantenimiento)\n"
+                + " - generate (estadísticas_generales)\n\n";
     }
 }

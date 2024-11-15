@@ -27,29 +27,31 @@ public class DReserva {
             connection.closeConnection();
     }
 
-    public String save(String estado) throws SQLException {
-        String query = "INSERT INTO reserva(estado) VALUES(?)";
+    public String save(String estado, int usuarioId) throws SQLException {
+        String query = "INSERT INTO reserva(estado, usuario_id) VALUES(?, ?)";
         PreparedStatement ps = connection.connection().prepareStatement(query);
         ps.setString(1, estado);
+        ps.setInt(2, usuarioId);
 
         if (ps.executeUpdate() == 0) {
             System.err.println("class DReserva.java dice: La reserva no se pudo insertar");
             throw new SQLException();
         }
-        return "La reserva se inserto con exito";
+        return "La reserva se insertó con éxito";
     }
 
-    public String update(int id, String estado) throws SQLException {
-        String query = "UPDATE reserva SET estado=? WHERE id=?";
+    public String update(int id, String estado, int usuarioId) throws SQLException {
+        String query = "UPDATE reserva SET estado=?, usuario_id=? WHERE id=?";
         PreparedStatement ps = connection.connection().prepareStatement(query);
         ps.setString(1, estado);
-        ps.setInt(2, id);
+        ps.setInt(2, usuarioId);
+        ps.setInt(3, id);
 
         if (ps.executeUpdate() == 0) {
             System.err.println("class DReserva.java dice: La reserva no se pudo actualizar");
             return "La reserva no se pudo actualizar";
         }
-        return "La reserva se actualizo con exito";
+        return "La reserva se actualizó con éxito";
     }
 
     public String delete(int id) throws SQLException {
@@ -60,7 +62,7 @@ public class DReserva {
             System.err.println("class DReserva.java dice: La reserva no se pudo eliminar");
             return "La reserva no se pudo eliminar";
         }
-        return "La reserva se elimino con exito";
+        return "La reserva se eliminó con éxito";
     }
 
     public List<String[]> findAll() throws SQLException {
@@ -71,7 +73,8 @@ public class DReserva {
         while (set.next()) {
             reservas.add(new String[] {
                     String.valueOf(set.getInt("id")),
-                    set.getString("estado")
+                    set.getString("estado"),
+                    String.valueOf(set.getInt("usuario_id"))
             });
         }
         return reservas;
@@ -86,7 +89,8 @@ public class DReserva {
         if (set.next()) {
             reserva = new String[] {
                     String.valueOf(set.getInt("id")),
-                    set.getString("estado")
+                    set.getString("estado"),
+                    String.valueOf(set.getInt("usuario_id"))
             };
         }
         return reserva;

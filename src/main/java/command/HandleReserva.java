@@ -1,4 +1,5 @@
 package command;
+
 import java.util.List;
 import business.BReserva;
 
@@ -6,37 +7,53 @@ public class HandleReserva {
 
     public static String save(String params) {
         String response = "";
-        if (params instanceof String) {
-            BReserva reserva = new BReserva();
-            response = reserva.save(params);
-        } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método save (parámetro incorrecto)";
+        try {
+            String[] parts = params.split(", ");
+            if (parts.length == 2) {
+                String estado = parts[0];
+                int usuarioId = Integer.parseInt(parts[1]);
+                BReserva reserva = new BReserva();
+                response = reserva.save(estado, usuarioId);
+            } else {
+                response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método save (parámetros incorrectos)";
+            }
+        } catch (Exception e) {
+            response = "HandleReserva.java dice: Error en el método save - " + e.getMessage();
         }
         return response;
     }
 
     public static String update(String params) {
         String response = "";
-        if (isValidFormat(params)) {
+        try {
             String[] parts = params.split(", ");
-            int id = Integer.parseInt(parts[0]);
-            String estado = parts[1];
-            BReserva reserva = new BReserva();
-            response = reserva.update(id, estado);
-        } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método update (formato de parámetros incorrecto)";
+            if (parts.length == 3) {
+                int id = Integer.parseInt(parts[0]);
+                String estado = parts[1];
+                int usuarioId = Integer.parseInt(parts[2]);
+                BReserva reserva = new BReserva();
+                response = reserva.update(id, estado, usuarioId);
+            } else {
+                response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método update (formato de parámetros incorrecto)";
+            }
+        } catch (Exception e) {
+            response = "HandleReserva.java dice: Error en el método update - " + e.getMessage();
         }
         return response;
     }
 
     public static String delete(String params) {
         String response = "";
-        if (isOnlyNumbers(params)) {
-            int idToDelete = Integer.parseInt(params);
-            BReserva reserva = new BReserva();
-            response = reserva.delete(idToDelete);
-        } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método delete (parámetro no numérico)";
+        try {
+            if (isOnlyNumbers(params)) {
+                int idToDelete = Integer.parseInt(params);
+                BReserva reserva = new BReserva();
+                response = reserva.delete(idToDelete);
+            } else {
+                response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método delete (parámetro no numérico)";
+            }
+        } catch (Exception e) {
+            response = "HandleReserva.java dice: Error en el método delete - " + e.getMessage();
         }
         return response;
     }
@@ -49,13 +66,17 @@ public class HandleReserva {
 
     public static String findOne(String params) {
         String response = "";
-        if (isOnlyNumbers(params)) {
-            int idToFind = Integer.parseInt(params);
-            BReserva reserva = new BReserva();
-            String[] reservaFound = reserva.findOne(idToFind);
-            response = java.util.Arrays.toString(reservaFound);
-        } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método findOne (parámetro no numérico)";
+        try {
+            if (isOnlyNumbers(params)) {
+                int idToFind = Integer.parseInt(params);
+                BReserva reserva = new BReserva();
+                String[] reservaFound = reserva.findOne(idToFind);
+                response = java.util.Arrays.toString(reservaFound);
+            } else {
+                response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método findOne (parámetro no numérico)";
+            }
+        } catch (Exception e) {
+            response = "HandleReserva.java dice: Error en el método findOne - " + e.getMessage();
         }
         return response;
     }

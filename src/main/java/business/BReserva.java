@@ -12,18 +12,18 @@ public class BReserva {
         this.dReserva = new DReserva();
     }
 
-    public String save(String estado) {
+    public String save(String estado, int usuarioId) {
         try {
-            return dReserva.save(estado);
+            return dReserva.save(estado, usuarioId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "La reserva no se pudo guardar: " + e.getMessage();
         }
     }
 
-    public String update(int id, String estado) {
+    public String update(int id, String estado, int usuarioId) {
         try {
-            return dReserva.update(id, estado);
+            return dReserva.update(id, estado, usuarioId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "La reserva no se pudo actualizar: " + e.getMessage();

@@ -10,12 +10,12 @@ public class PostgresqlConnection {
         try {
             databaseConnection databaseConnection =
                     new databaseConnection(
-                            "postgres",
-                            "1999",
-                            "localhost",
+                            "grup03sa",
+                            "grup003grup003*",
+                            "mail.tecnoweb.org.bo",
                             "5432",
                             "db_grupo03sa");
-            String query ="select * from users where id=1";
+            String query ="select * from usuario where id=1";
             PreparedStatement ps = databaseConnection.connection().prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             System.out.print("res: "+rs);
