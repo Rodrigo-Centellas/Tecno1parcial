@@ -5,11 +5,11 @@ public class Extractor {
     private static String HOTMAIL = "d=hotmail";
     private static String YAHOO = "d=yahoo";
     private static String UAGRM = "d=uagrm";
-    
+
     public static Email getEmail(String plain_text) {
         return new Email(getFrom(plain_text), getSubject(plain_text));
     }
-    
+
     private static String getFrom(String plain_text) {
         String search = "Return-Path: <";
         int index_begin = plain_text.indexOf(search);
@@ -23,7 +23,7 @@ public class Extractor {
         }
         return plain_text.substring(index_begin, index_end);
     }
-    
+
     private static String getTo(String plain_text) {
         String to = "";
         if (plain_text.contains(GMAIL)) {
@@ -37,7 +37,7 @@ public class Extractor {
         }
         return to;
     }
-    
+
     private static String getSubject(String plain_text) {
         String search = "Subject: ";
         int index_begin = plain_text.indexOf(search);
@@ -51,16 +51,16 @@ public class Extractor {
         }
         return plain_text.substring(index_begin, index_end).trim();
     }
-    
+
     private static String getToFromGmail(String plain_text) {
         return getToCommon(plain_text);
     }
-    
+
     private static String getToFromHotmail(String plain_text) {
         String aux = getToCommon(plain_text);
         return aux.substring(1, aux.length() - 1);
     }
-    
+
     private static String getToFromYahoo(String plain_text) {
         int index = plain_text.indexOf("To: ");
         if (index == -1) {
@@ -73,12 +73,12 @@ public class Extractor {
         }
         return plain_text.substring(i + 1, e);
     }
-    
+
     private static String getToFromUagrm(String plain_text) {
         String aux = getToCommon(plain_text);
         return aux.substring(1, aux.length() - 1);
     }
-    
+
     private static String getToCommon(String plain_text) {
         String aux = "To: ";
         int index_begin = plain_text.indexOf(aux);

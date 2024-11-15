@@ -2,26 +2,25 @@ package business;
 
 import java.sql.SQLException;
 import java.util.List;
-
-public class BUsuario {
-    private DUsuario dUsuario;
+import data.DUsuario;
+public class BUsuario {    private DUsuario dUsuario;
 
     public BUsuario(){
         this.dUsuario = new DUsuario();
     }
 
-    public String save(String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId) {
+    public String save(String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId, Integer garanteId) {
         try {
-            return dUsuario.save(apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId);
+            return dUsuario.save(apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId, garanteId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "El Usuario no se pudo guardar: " + e.getMessage();
         }
     }
 
-    public String update(int id, String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId) {
+    public String update(int id, String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId, Integer garanteId) {
         try {
-            return dUsuario.update(id, apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId);
+            return dUsuario.update(id, apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId, garanteId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "El Usuario no se pudo actualizar: " + e.getMessage();
@@ -54,4 +53,5 @@ public class BUsuario {
             return null;
         }
     }
+
 }

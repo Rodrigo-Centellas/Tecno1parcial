@@ -27,10 +27,10 @@ public class DVehiculo {
             connection.closeConnection();
     }
 
-    public String save(int anio, String placa, float precioCompra) throws SQLException {
-        String query = "INSERT INTO vehiculo(anio, placa, precio_compra) VALUES(?, ?, ?)";
+    public String save(int año, String placa, float precioCompra) throws SQLException {
+        String query = "INSERT INTO vehiculo(año, placa, precio_compra) VALUES(?, ?, ?)";
         PreparedStatement ps = connection.connection().prepareStatement(query);
-        ps.setInt(1, anio);
+        ps.setInt(1, año);
         ps.setString(2, placa);
         ps.setFloat(3, precioCompra);
 
@@ -41,10 +41,10 @@ public class DVehiculo {
         return "El vehiculo se inserto con exito";
     }
 
-    public String update(int id, int anio, String placa, float precioCompra) throws SQLException {
-        String query = "UPDATE vehiculo SET anio=?, placa=?, precio_compra=? WHERE id=?";
+    public String update(int id, int año, String placa, float precioCompra) throws SQLException {
+        String query = "UPDATE vehiculo SET año=?, placa=?, precio_compra=? WHERE id=?";
         PreparedStatement ps = connection.connection().prepareStatement(query);
-        ps.setInt(1, anio);
+        ps.setInt(1, año);
         ps.setString(2, placa);
         ps.setFloat(3, precioCompra);
         ps.setInt(4, id);
@@ -75,7 +75,7 @@ public class DVehiculo {
         while (set.next()) {
             vehiculos.add(new String[] {
                     String.valueOf(set.getInt("id")),
-                    String.valueOf(set.getInt("anio")),
+                    String.valueOf(set.getInt("año")),
                     set.getString("placa"),
                     String.valueOf(set.getFloat("precio_compra"))
             });
@@ -92,7 +92,7 @@ public class DVehiculo {
         if (set.next()) {
             vehiculo = new String[] {
                     String.valueOf(set.getInt("id")),
-                    String.valueOf(set.getInt("anio")),
+                    String.valueOf(set.getInt("año")),
                     set.getString("placa"),
                     String.valueOf(set.getFloat("precio_compra"))
             };

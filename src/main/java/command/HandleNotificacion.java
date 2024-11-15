@@ -1,16 +1,17 @@
 package command;
-import java.util.List;
-import business.BReserva;
 
-public class HandleReserva {
+import business.BNotificacion;
+import java.util.List;
+
+public class HandleNotificacion {
 
     public static String save(String params) {
         String response = "";
-        if (params instanceof String) {
-            BReserva reserva = new BReserva();
-            response = reserva.save(params);
+        if (params != null && !params.isEmpty()) {
+            BNotificacion notificacion = new BNotificacion();
+            response = notificacion.save(params);
         } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método save (parámetro incorrecto)";
+            response = "HandleNotificacion.java dice: Ocurrió un error al ejecutar el método save (parámetros incorrectos)";
         }
         return response;
     }
@@ -20,11 +21,11 @@ public class HandleReserva {
         if (isValidFormat(params)) {
             String[] parts = params.split(", ");
             int id = Integer.parseInt(parts[0]);
-            String estado = parts[1];
-            BReserva reserva = new BReserva();
-            response = reserva.update(id, estado);
+            String tipo = parts[1];
+            BNotificacion notificacion = new BNotificacion();
+            response = notificacion.update(id, tipo);
         } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método update (formato de parámetros incorrecto)";
+            response = "HandleNotificacion.java dice: Ocurrió un error al ejecutar el método update (formato de parámetros incorrecto)";
         }
         return response;
     }
@@ -33,29 +34,29 @@ public class HandleReserva {
         String response = "";
         if (isOnlyNumbers(params)) {
             int idToDelete = Integer.parseInt(params);
-            BReserva reserva = new BReserva();
-            response = reserva.delete(idToDelete);
+            BNotificacion notificacion = new BNotificacion();
+            response = notificacion.delete(idToDelete);
         } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método delete (parámetro no numérico)";
+            response = "HandleNotificacion.java dice: Ocurrió un error al ejecutar el método delete (parámetro no numérico)";
         }
         return response;
     }
 
     public static String findAll() {
-        BReserva reserva = new BReserva();
-        List<String[]> reservas = reserva.findAll();
-        return reservas != null ? concatenate(reservas) : "Reservas vacías";
+        BNotificacion notificacion = new BNotificacion();
+        List<String[]> notificaciones = notificacion.findAll();
+        return notificaciones != null ? concatenate(notificaciones) : "Notificaciones vacías";
     }
 
     public static String findOne(String params) {
         String response = "";
         if (isOnlyNumbers(params)) {
             int idToFind = Integer.parseInt(params);
-            BReserva reserva = new BReserva();
-            String[] reservaFound = reserva.findOne(idToFind);
-            response = java.util.Arrays.toString(reservaFound);
+            BNotificacion notificacion = new BNotificacion();
+            String[] notificacionFound = notificacion.findOne(idToFind);
+            response = java.util.Arrays.toString(notificacionFound);
         } else {
-            response = "HandleReserva.java dice: Ocurrió un error al ejecutar el método findOne (parámetro no numérico)";
+            response = "HandleNotificacion.java dice: Ocurrió un error al ejecutar el método findOne (parámetro no numérico)";
         }
         return response;
     }
@@ -69,7 +70,7 @@ public class HandleReserva {
         return cadena.matches("^[0-9]+$");
     }
 
-    public static String concatenate(List<String[]> items) {
+    private static String concatenate(List<String[]> items) {
         StringBuilder concatenated = new StringBuilder();
         String delimiter = ", ";
         for (String[] itemArray : items) {

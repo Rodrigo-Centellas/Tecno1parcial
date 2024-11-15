@@ -17,6 +17,7 @@ public class Email {
         this.message = message;
     }
 
+
     public Email(String from, String subject) {
         this.from = from;
         this.subject = subject;

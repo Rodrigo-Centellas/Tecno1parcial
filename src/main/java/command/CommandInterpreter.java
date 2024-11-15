@@ -13,6 +13,10 @@ public class CommandInterpreter {
         COMMANDS.put("reserva", new String[] { "save", "update", "findOne", "findAll", "delete" });
         COMMANDS.put("usuario", new String[] { "save", "update", "findOne", "findAll", "delete" });
         COMMANDS.put("vehiculo", new String[] { "save", "update", "findOne", "findAll", "delete" });
+        COMMANDS.put("rol", new String[] { "save", "update", "findOne", "findAll", "delete" });
+        COMMANDS.put("pagos", new String[] { "save", "update", "findOne", "findAll", "delete" });
+        COMMANDS.put("notificacion", new String[] { "save", "update", "findOne", "findAll", "delete" });
+        COMMANDS.put("reportes", new String[] { "generate" });
     }
 
     public static String interpret(String subject) {
@@ -54,102 +58,120 @@ public class CommandInterpreter {
 
         switch (useCase.toLowerCase()) {
             case "contrato":
-                return executeContrato(command, params);
+                return handleContrato(command, params);
             case "mantenimiento":
-                return executeMantenimiento(command, params);
+                return handleMantenimiento(command, params);
             case "reserva":
-                return executeReserva(command, params);
+                return handleReserva(command, params);
             case "usuario":
-                return executeUsuario(command, params);
+                return handleUsuario(command, params);
             case "vehiculo":
-                return executeVehiculo(command, params);
+                return handleVehiculo(command, params);
+            case "rol":
+                return handleRol(command, params);
+            case "pagos":
+                return handlePagos(command, params);
+            case "notificacion":
+                return handleNotificacion(command, params);
+            case "reportes":
+                return handleReportes(command, params);
             default:
                 return "No se reconoce " + useCase + " como un caso de uso";
         }
     }
 
-    private static String executeContrato(String command, String params) {
+    private static String handleContrato(String command, String params) {
         switch (command) {
-            case "save":
-                return HandleContrato.save(params);
-            case "update":
-                return HandleContrato.update(params);
-            case "findOne":
-                return HandleContrato.findOne(params);
-            case "findAll":
-                return HandleContrato.findAll();
-            case "delete":
-                return HandleContrato.delete(params);
-            default:
-                return "Comando no válido para contrato";
+            case "save": return HandleContrato.save(params);
+            case "update": return HandleContrato.update(params);
+            case "delete": return HandleContrato.delete(params);
+            case "findAll": return HandleContrato.findAll();
+            case "findOne": return HandleContrato.findOne(params);
+            default: return "Comando no válido para contrato";
         }
     }
 
-    private static String executeMantenimiento(String command, String params) {
+    private static String handleMantenimiento(String command, String params) {
         switch (command) {
-            case "save":
-                return HandleMantenimiento.save(params);
-            case "update":
-                return HandleMantenimiento.update(params);
-            case "findOne":
-                return HandleMantenimiento.findOne(params);
-            case "findAll":
-                return HandleMantenimiento.findAll();
-            case "delete":
-                return HandleMantenimiento.delete(params);
-            default:
-                return "Comando no válido para mantenimiento";
+            case "save": return HandleMantenimiento.save(params);
+            case "update": return HandleMantenimiento.update(params);
+            case "delete": return HandleMantenimiento.delete(params);
+            case "findAll": return HandleMantenimiento.findAll();
+            case "findOne": return HandleMantenimiento.findOne(params);
+            default: return "Comando no válido para mantenimiento";
         }
     }
 
-    private static String executeReserva(String command, String params) {
+    private static String handleReserva(String command, String params) {
         switch (command) {
-            case "save":
-                return HandleReserva.save(params);
-            case "update":
-                return HandleReserva.update(params);
-            case "findOne":
-                return HandleReserva.findOne(params);
-            case "findAll":
-                return HandleReserva.findAll();
-            case "delete":
-                return HandleReserva.delete(params);
-            default:
-                return "Comando no válido para reserva";
+            case "save": return HandleReserva.save(params);
+            case "update": return HandleReserva.update(params);
+            case "delete": return HandleReserva.delete(params);
+            case "findAll": return HandleReserva.findAll();
+            case "findOne": return HandleReserva.findOne(params);
+            default: return "Comando no válido para reserva";
         }
     }
 
-    private static String executeUsuario(String command, String params) {
+    private static String handleUsuario(String command, String params) {
         switch (command) {
-            case "save":
-                return HandleUsuario.save(params);
-            case "update":
-                return HandleUsuario.update(params);
-            case "findOne":
-                return HandleUsuario.findOne(params);
-            case "findAll":
-                return HandleUsuario.findAll();
-            case "delete":
-                return HandleUsuario.delete(params);
-            default:
-                return "Comando no válido para usuario";
+            case "save": return HandleUsuario.save(params);
+            case "update": return HandleUsuario.update(params);
+            case "delete": return HandleUsuario.delete(params);
+            case "findAll": return HandleUsuario.findAll();
+            case "findOne": return HandleUsuario.findOne(params);
+            default: return "Comando no válido para usuario";
         }
     }
 
-    private static String executeVehiculo(String command, String params) {
+    private static String handleVehiculo(String command, String params) {
         switch (command) {
-            case "save":
-                return HandleVehiculo.save(params);
-            case "update":
-                return HandleVehiculo.update(params);
-            case "findOne":
-                return HandleVehiculo.findOne(params);
-            case "findAll":
-                return HandleVehiculo.findAll();
-            case "delete":
-                return HandleVehiculo.delete(params);
-            default:
-                return "Comando no válido para vehiculo";
+            case "save": return HandleVehiculo.save(params);
+            case "update": return HandleVehiculo.update(params);
+            case "delete": return HandleVehiculo.delete(params);
+            case "findAll": return HandleVehiculo.findAll();
+            case "findOne": return HandleVehiculo.findOne(params);
+            default: return "Comando no válido para vehículo";
+        }
+    }
+
+    private static String handleRol(String command, String params) {
+        switch (command) {
+            case "save": return HandleRol.save(params);
+            case "update": return HandleRol.update(params);
+            case "delete": return HandleRol.delete(params);
+            case "findAll": return HandleRol.findAll();
+            case "findOne": return HandleRol.findOne(params);
+            default: return "Comando no válido para rol";
+        }
+    }
+
+    private static String handlePagos(String command, String params) {
+        switch (command) {
+            case "save": return HandlePagos.save(params);
+            case "update": return HandlePagos.update(params);
+            case "delete": return HandlePagos.delete(params);
+            case "findAll": return HandlePagos.findAll();
+            case "findOne": return HandlePagos.findOne(params);
+            default: return "Comando no válido para pagos";
+        }
+    }
+
+    private static String handleNotificacion(String command, String params) {
+        switch (command) {
+            case "save": return HandleNotificacion.save(params);
+            case "update": return HandleNotificacion.update(params);
+            case "delete": return HandleNotificacion.delete(params);
+            case "findAll": return HandleNotificacion.findAll();
+            case "findOne": return HandleNotificacion.findOne(params);
+            default: return "Comando no válido para notificaciones";
+        }
+    }
+
+    private static String handleReportes(String command, String params) {
+        switch (command) {
+            case "generate": return HandleReportes.generate(params);
+            default: return "Comando no válido para reportes";
         }
     }
 
@@ -178,8 +200,8 @@ public class CommandInterpreter {
                 + " - delete (id)\n"
                 + "\n"
                 + "CU: usuario\n"
-                + " - save (apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId)\n"
-                + " - update (id, apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId)\n"
+                + " - save (apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId, garanteId)\n"
+                + " - update (id, apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId, garanteId)\n"
                 + " - findOne (id)\n"
                 + " - findAll (all)\n"
                 + " - delete (id)\n"
@@ -189,6 +211,23 @@ public class CommandInterpreter {
                 + " - update (id, anio, placa, precioCompra)\n"
                 + " - findOne (id)\n"
                 + " - findAll (all)\n"
-                + " - delete (id)\n";
+                + " - delete (id)\n"
+                + "\n"
+                + "CU: pagos\n"
+                + " - save (monto, fechaPago, usuarioId)\n"
+                + " - update (id, monto, fechaPago)\n"
+                + " - findOne (id)\n"
+                + " - findAll (all)\n"
+                + " - delete (id)\n"
+                + "\n"
+                + "CU: notificacion\n"
+                + " - save (mensaje, fecha, usuarioId)\n"
+                + " - update (id, mensaje, fecha)\n"
+                + " - findOne (id)\n"
+                + " - findAll (all)\n"
+                + " - delete (id)\n"
+                + "\n"
+                + "CU: reportes\n"
+                + " - generate (tipoReporte, parametros)\n";
     }
 }

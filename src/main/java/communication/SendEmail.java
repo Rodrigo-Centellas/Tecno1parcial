@@ -54,6 +54,6 @@ public class SendEmail {
 
     public static void main(String[] args) {
         SendEmail emailSender = new SendEmail();
-        emailSender.sendEmail("recipient-email@example.com", "This is the response text");
+        emailSender.sendEmail("rodrigo.centellas1@gmail.com", "usuario save (García, 12345678, Calle 123, garcia@example.com, 1995-05-10, Juan, password123, 1, 2)");
     }
 }
