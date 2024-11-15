@@ -14,7 +14,7 @@ public class PostgresqlConnection {
                             "1999",
                             "localhost",
                             "5432",
-                            "db_pizzeria");
+                            "db_grupo03sa");
             String query ="select * from users where id=1";
             PreparedStatement ps = databaseConnection.connection().prepareStatement(query);
             ResultSet rs = ps.executeQuery();

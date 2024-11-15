@@ -3,8 +3,6 @@ package business;
 import java.sql.SQLException;
 import java.util.List;
 
-import data.DUsuario;
-
 public class BUsuario {
     private DUsuario dUsuario;
 
@@ -12,18 +10,18 @@ public class BUsuario {
         this.dUsuario = new DUsuario();
     }
 
-    public String save(String name, String email, String password, int phone, String address, String role) {
+    public String save(String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId) {
         try {
-            return dUsuario.save(name, email, password, phone, address, role);
+            return dUsuario.save(apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "El Usuario no se pudo guardar: " + e.getMessage();
         }
     }
 
-    public String update(int id, String name, String email, String password, int phone, String address, String role) {
+    public String update(int id, String apellido, String ci, String direccion, String email, String fechaNacimiento, String nombre, String password, int rolId) {
         try {
-            return dUsuario.update(id, name, email, password, phone, address, role);
+            return dUsuario.update(id, apellido, ci, direccion, email, fechaNacimiento, nombre, password, rolId);
         } catch (SQLException e) {
             e.printStackTrace();
             return "El Usuario no se pudo actualizar: " + e.getMessage();

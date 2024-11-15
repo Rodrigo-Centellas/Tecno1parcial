@@ -9,9 +9,9 @@ public class SendEmail {
     // private final String mail = "ginobaptista@gmail.com";
     // private final String password = "dqii suby uhmu arbt";
     private final static String PROTOCOL = "smtp";
-    private final String mail = "grupo20sa@tecnoweb.org.bo";
-    private final String username = "grupo20sa";
-    private final String password = "grup020grup020";
+    private final String mail = "grupo03sa@tecnoweb.org.bo";
+    private final String username = "grupo03sa";
+    private final String password = "grup003grup003";
 
     public void sendEmail(String to, String response) {
         Properties props = new Properties();

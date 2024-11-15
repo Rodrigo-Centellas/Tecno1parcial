@@ -3,58 +3,54 @@ package business;
 import java.sql.SQLException;
 import java.util.List;
 
-import data.DState;
+import data.DReserva;
 
-public class BState {
-    private DState dState;
+public class BReserva {
+    private DReserva dReserva;
 
-    public BState() {
-        this.dState = new DState();
+    public BReserva() {
+        this.dReserva = new DReserva();
     }
 
-    public String save(String name) {
+    public String save(String estado) {
         try {
-            return dState.save(name);
+            return dReserva.save(estado);
         } catch (SQLException e) {
             e.printStackTrace();
-            return "El Estado no se pudo guardar:" + e.getMessage();
+            return "La reserva no se pudo guardar: " + e.getMessage();
         }
     }
 
-  
-    public String update(int id, String name) {
+    public String update(int id, String estado) {
         try {
-            return dState.update(id, name);
+            return dReserva.update(id, estado);
         } catch (SQLException e) {
             e.printStackTrace();
-            return "El Estado no se pudo actualizar: " + e.getMessage();
+            return "La reserva no se pudo actualizar: " + e.getMessage();
         }
     }
-
 
     public String delete(int id) {
         try {
-            return dState.delete(id);
+            return dReserva.delete(id);
         } catch (SQLException e) {
             e.printStackTrace();
-            return "El Estado no se pudo eliminar: " + e.getMessage();
+            return "La reserva no se pudo eliminar: " + e.getMessage();
         }
     }
 
-    
     public List<String[]> findAll() {
         try {
-            return dState.findAll();
+            return dReserva.findAll();
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    
     public String[] findOne(int id) {
         try {
-            return dState.findOne(id);
+            return dReserva.findOne(id);
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
